@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Element Symbol Drill</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500..700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="brand">
+    <div class="brand-mark"><span class="tile">Mg</span> MOGIBARA</div>
+    <div class="brand-tag">Lab Drills</div>
+  </div>
+
+  <!-- ===== SETUP SCREEN ===== -->
+  <section id="setup">
+    <h1>Element Symbol Drill</h1>
+    <p class="lede">Pick which elements go into the round, set a timer if you want one, then start. Case doesn't matter when you answer.</p>
+
+    <div class="card">
+      <h2 id="pickerHeading">Elements</h2>
+      <p class="hint" id="loadHint">Loading elements…</p>
+      <div class="picker-controls">
+        <button class="ghost-btn" id="selectAll" type="button">Select all</button>
+        <button class="ghost-btn" id="selectNone" type="button">Clear all</button>
+        <input class="ghost-btn" id="filterBox" type="text" placeholder="Filter by name or symbol…">
+      </div>
+      <div class="grid" id="elementGrid" role="group" aria-labelledby="pickerHeading"></div>
+      <p class="count-line"><strong id="countNum">0</strong> of <span id="totalNum">0</span> elements selected</p>
+      <p class="err" id="pickErr">Pick at least one element to start.</p>
+    </div>
+
+    <div class="card">
+      <h2>Timer</h2>
+      <p class="hint">Optional — put a time limit on the whole round.</p>
+      <div class="timer-row">
+        <label class="toggle">
+          <input type="checkbox" id="timerOn">
+          Set a timer
+        </label>
+        <div class="time-input" id="timeFields" hidden>
+          <input type="number" id="timeHr" min="0" max="23" value="0" inputmode="numeric"><span>hr</span>
+          <input type="number" id="timeMin" min="0" max="59" value="2" inputmode="numeric"><span>min</span>
+          <input type="number" id="timeSec" min="0" max="59" value="0" inputmode="numeric"><span>sec</span>
+        </div>
+      </div>
+    </div>
+
+    <button class="start-btn" id="startBtn" type="button" disabled>Start quiz</button>
+  </section>
+
+  <!-- ===== QUIZ SCREEN ===== -->
+  <section id="quiz" hidden>
+    <div class="quiz-head">
+      <span class="progress-txt" id="progressTxt">Question 1/27</span>
+      <span class="clock" id="clockTxt" hidden>02:00</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+    <div class="card q-card">
+      <p class="q-eyebrow">Element</p>
+      <h2 class="q-name" id="qName">—</h2>
+      <form class="answer-row" id="answerForm" autocomplete="off">
+        <input type="text" id="answerInput" placeholder="symbol" maxlength="3" autocapitalize="off" autocorrect="off" spellcheck="false">
+        <button type="submit">Check</button>
+      </form>
+      <p class="feedback" id="feedback"></p>
+    </div>
+  </section>
+
+  <!-- ===== RESULTS SCREEN ===== -->
+  <section id="results" hidden>
+    <div class="card result-card">
+      <p class="q-eyebrow" id="resultHeadline">Quiz over</p>
+      <p class="result-score"><span id="scoreNum">0</span>/<span id="scoreTotal">0</span></p>
+      <p class="result-pct" id="scorePct">0%</p>
+      <span class="result-tag" id="resultTag">Keep practising</span>
+
+      <div id="missBlock">
+        <div class="miss-list" id="missList" hidden>
+          <h3>Worth a second look</h3>
+          <div id="missItems"></div>
+        </div>
+        <p class="no-miss" id="noMiss" hidden>Every symbol landed. Nothing to review.</p>
+      </div>
+
+      <div class="result-actions">
+        <button class="btn-ghost" id="againBtn" type="button">Same set again</button>
+        <button class="btn-primary" id="changeBtn" type="button">Change elements</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Mogibara</span>
+    <span>Mogibara</span>
+  </footer>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
